@@ -7,16 +7,18 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
-    repoURL: oci://registry-1.docker.io/bitnamicharts/apache
-    chart: apache
-    targetRevision: 9.6.1
-    path: operations/kind/science
-    helm:
-      releaseName: demo
-      valueFiles:
-        - values.yaml
-        - demo.yaml
+  sources:
+    - repoURL: registry-1.docker.io/bitnamicharts
+      chart: apache
+      targetRevision: 9.6.1
+      helm:
+        releaseName: demo
+        valueFiles:
+          - $values/operations/kind/science/values.yaml
+          - $values/operations/kind/science/demo.yaml
+    - repoURL: https://github.com/vpipkt/sturdy-octo-garbanzo.git
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: science
