@@ -6,9 +6,9 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: t-nx-stateful-t-s07642-airbyte-data-platform
+  project: txp
   source:
-    repoURL: oci://egistry-1.docker.io/bitnamicharts/apache
+    repoURL: oci://registry-1.docker.io/bitnamicharts/apache
     chart: apache
     targetRevision: 9.6.1
     path: operations/kind/science
