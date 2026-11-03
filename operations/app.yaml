@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: t-nx-stateful-t-s07642-airbyte-data-platform
+  source:
+    repoURL: oci://egistry-1.docker.io/bitnamicharts/apache
+    chart: apache
+    targetRevision: 9.6.1
+    path: operations/kind/science
+    helm:
+      releaseName: demo
+      valueFiles:
+        - values.yaml
+        - demo.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: science
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

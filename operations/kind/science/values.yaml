@@ -1,0 +1,3 @@
+podAnnotations:
+  foo: bar
+  baz: quux
