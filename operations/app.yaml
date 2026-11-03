@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: txp
+  project: default
   source:
     repoURL: oci://registry-1.docker.io/bitnamicharts/apache
     chart: apache
